@@ -1,0 +1,45 @@
+Exame normal 22/23
+
+1
+
+a)
+Add-Migration: Pode utilizar quando for escolhido o workflow Code first, ou seja, quando criamos primeiro o código da aplicação/site e queremos construir uma BD através disto.
+
+Scaffold-DbContext: Utilizamos quando temos primeiro a BD criada e apartir dela geramos os modelos e código fonte.
+
+b)
+Devido a possibilidade de workflows diferentes; code first e database first, os dois metodos devem ser utilizados de acordo com a preferencia do programador, digamos que a equipa construiu a BD primeiro e agora quer o código fonte, inves de fazer tudo de raiz, se utiliza o Scaffold-DbContext e a lógica se inverte para o add-migration.
+
+c)
+Usaria o add-migration (code first), pois para mim, é mais fácil construir o código fonte e depois ter a base de dados.
+
+2
+a) MostraProdutos.ad(...)?
+
+b) o simbolo "?" significa nullable, serve para indicar que certos objetos podem ter valores NULL, havera interesse em utiliza-lo neste contexto, pois um produto pode ou não ter stock ou um preço definido, para impedirmos um erro, adicionamos um "?". 
+
+c)
+seria mostrado uma lista com dois produtos: 
+	Nome: Calças Preço: 45 Stock: 25
+	Nome: Camisas Preço: 55 Stock: 40
+
+d)
+i) usaria um add-magration e um update-database.
+
+ii) nenhuma das duas implementações está correta, pois apenas é mostrado o nome do produto.
+
+teremos que reescrever a implementação:
+
+	var selProdutos = _context.Produtos.Where(a => a.stock > 0)
+						.OrderBy(a => a.Nome);
+
+3
+1 - Criar os modelos necessarios e apartir da ai, criar a base de dados utilizando as migrations
+2 - criar as views e controllers para os modelos, utilizando para o efeito, o scaffold itens do proprio VS
+3 - desenvolver todos os metodos necessários nos controllers, para que as nossas views passem a ter o comportamento necessário.
+4 - modificar as views para tornar o site mais agradavel para os futuros utilizadores
+5 - Adicionar entradas na BD para testes e correções
+6 - Desenvolver o mecanismos de login e registo, juntamente da definição das roles existentes no site.
+7 - após ter um prótotipo, começamos a arrumar o que é necessário e adicionar coisas novas, até chegarmos numa versão aceitavel.
+
+nós fizémos assim
